@@ -1,3 +1,8 @@
 #!/usr/bin/python3
-for c in range(ord('z'), ord('a') - 1, -1):
-    print("{:c}".format((c - 32) if c % 2 else c), end='')
+for character in reversed(range(97, 123)):
+    if character % 2 != 0:
+        be_upper = 32
+    else:
+        be_upper = 0
+
+    print("{:c}".format(character - be_upper), end="")
