@@ -5,5 +5,5 @@ if __name__ == "__main__":
     sum = 0
     for argc in argv[1:]:
         sum += int(argc)
-    
+
     print(sum)
