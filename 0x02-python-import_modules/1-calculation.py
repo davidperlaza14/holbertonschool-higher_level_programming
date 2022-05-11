@@ -1,15 +1,18 @@
 #!/usr/bin/python3
-if __name__ == '__main__':
-    import sys
-    argv = sys.argv
-    conteo = len(sys.argv) - 1
+if __name__ == "__main__":
+    from sys import argv
 
-if conteo == 0:
-    print("0 arguments.")
-elif conteo == 1:
-    print("{} argument:".format(conteo))
-    print("{}: {}".format(conteo, argv[conteo]))
-else:
-    print("{} arguments:".format(conteo))
-    for i in range(1, conteo + 1):
-        print("{}: {}".format(i, argv[i]))
+    argc = len(argv)
+
+    if argc == 1:
+        word = "arguments."
+    elif argc == 2:
+        word = "argument:"
+    else:
+        word = "arguments:"
+
+    print("{:d} {:s}".format(argc - 1, word))
+
+    for num, value in enumerate(argv):
+        if num > 0:
+            print("{:d}: {:s}".format(num, value))
