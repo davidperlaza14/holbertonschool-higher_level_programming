@@ -7,10 +7,10 @@ if __name__ == "__main__":
     if argc == 1:
         word = "arguments."
     elif argc == 2:
-        word == "argument:"
+        word = "argument:"
     else:
         word = "arguments:"
-    
+
     print("{:d} {:s}".format(argc - 1, word))
 
     for num, value in enumerate(argv):
