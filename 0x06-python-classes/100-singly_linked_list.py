@@ -1,119 +1,83 @@
 #!/usr/bin/python3
-"""Documentation of a square class"""
 
 
-class Square():
-    """Square class for quadrilateral with four equal sides"""
+class Node:
+    """Node of a singly linked list.
+    Private instance attribute: data:
+        - property def data(self)
+        - property setter def data(self, value)
+    Private instance attribute: next_node:
+        - property def next_node(self)
+        - property setter def next_node(self, value)
+    Instantiation with data and next_node.
+    """
 
-    def __init__(self, size=0, position=(0, 0)):
-        """Sets the initial size and position of an instantiated object
-           Throws an error when size is not integer or when position is not
-           a tuple containing two integers
-        Args:
-            size (int, optional): the size of the square object
-            position (tuple, optional): the position of the object when printed
-        Raises:
-            TypeError: when the value passed is not an integer or a two integer
-            tuplet
-            ValueError: when the value passed is less than 0
-        """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
-
-        if not isinstance(position, tuple):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif len(position) is not 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif not isinstance(position[0], int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif not isinstance(position[1], int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif position[0] < 0 or position[1] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        else:
-            self.__position = position
+    def __init__(self, data, next_node=None):
+        """Initializes the data of the node."""
+        self.data = data
+        self.next_node = next_node
 
     @property
-    def size(self):
-        """Returns the current size of the square object
-        Returns:
-            size of the current square object
-        """
-        return self.__size
+    def data(self):
+        """Retrieves the data from the node."""
+        return self.__data
 
-    @size.setter
-    def size(self, value):
-        """Resets the size of the square object
-        Args:
-            value (int): the size of the square object to reset to
-        Raises:
-            TypeError: when the value passed is not an integer or a two integer
-            tuplet
-            ValueError: when the value passed is less than 0
-        """
+    @data.setter
+    def data(self, value):
+        """Sets the data into a node."""
         if not isinstance(value, int):
-            raise TypeError("size must be an integer")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+            raise TypeError("data must be an integer")
+        self.__data = value
 
     @property
-    def position(self):
-        """Returns the current position of the square object
-        Returns:
-            the current position of the square object
-        """
-        return self.__position
+    def next_node(self):
+        """Retrieves the next_node."""
+        return self.__next_node
 
-    @position.setter
-    def position(self, value):
-        """Resets the position of the square object
-        Args:
-            value (tuple): a tuple of two integers defining the position
-        Raises:
-            TypeError: when the value passed is not an integer or a two integer
-            tuplet
-            ValueError: when the value passed is less than 0
-        """
-        if not isinstance(value, tuple):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif len(value) is not 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif not isinstance(value[0], int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif not isinstance(value[1], int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif value[0] < 0 or value[1] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        else:
-            self.__position = value
+    @next_node.setter
+    def next_node(self, value):
+        """Sets the next_node."""
+        if not isinstance(value, Node) and value is not None:
+            raise TypeError("next_node must be a Node object")
+        self.__next_node = value
 
-    def area(self):
-        """Returns the area of the current square
-        Returns:
-            the current area of the square object
-        """
-        return self.__size ** 2
 
-    def my_print(self):
-        """Prints the current square object with a size and at a position"""
+class SinglyLinkedList:
+    """ Singly linked list.
+    Private instance attribute: head.
+    Simple instantiation.
+    Public instance method: def sorted_insert(self, value).
+    """
 
-        if self.__size == 0:
-            print()
+    def __init__(self):
+        """Initializes the linked list."""
+        self.head = None
+
+    def __str__(self):
+        """For the print statement in the main file."""
+        my_str = ""
+        node = self.head
+        while node:
+            my_str += str(node.data)
+            my_str += '\n'
+            node = node.next_node
+        return my_str[:-1]
+
+    def sorted_insert(self, value):
+        """Inserts a node in a sorted linked list."""
+        new_node = Node(value)
+
+        if self.head is None:
+            self.head = new_node
             return
 
-        if self.__position[0] >= 0 and self.__position[1] >= 0:
-            for height in range(self.__position[1]):
-                print()
+        if value < self.head.data:
+            new_node.next_node = self.head
+            self.head = new_node
+            return
 
-        for rows in range(self.__size):
-            for spaces in range(self.__position[0]):
-                print(' ', end='')
-            for columns in range(self.__size):
-                print('#', end='')
-            print()
+        node = self.head
+        while node.next_node and node.next_node.data < value:
+            node = node.next_node
+        new_node.next_node = node.next_node
+        node.next_node = new_node
