@@ -1,44 +1,51 @@
 #!/usr/bin/python3
-"""
-The Rectangle Module:
+"""Module 1-rectangle
+Defines a Rectangle class.
 """
 
 
 class Rectangle:
-    """
-    Rectangle class:
-    it has two attributes width and height
-    """
+    """Rectangle class defined by width and height."""
+
     def __init__(self, width=0, height=0):
-        if not isinstance(width, int) or not isinstance(height, int):
-            wrong = 'width' if not isinstance(width, int) else 'height'
-            raise TypeError(wrong + 'must be an integer')
-        if height < 0 or width < 0:
-            wrong = 'width' if width < 0 else 'height'
-            raise ValueError(wrong + 'must be >= 0')
-        self.__width = width
-        self.__height = height
+        """Initializes a Rectangle instance.
+        Args:
+            width: width of the rectangle
+            height: height of the rectangle
+        """
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
-        return(self.__width)
+        """Retrieves the width of a Rectangle instance."""
+        return self.__width
 
     @width.setter
     def width(self, value):
+        """Sets the width of a Rectangle instance
+        Args:
+            value: value of the width, must be a positive integer
+        """
         if not isinstance(value, int):
-            raise TypeError('width must be an integer')
+            raise TypeError("width must be an integer")
         if value < 0:
-            raise ValueError('width must be >= 0')
+            raise ValueError("width must be >= 0")
         self.__width = value
 
     @property
     def height(self):
-        return(self.__height)
+        """Retrieves the height of a Rectangle instance."""
+        return self.__height
 
     @height.setter
     def height(self, value):
+        """Sets the height of a Rectangle instance
+        Args:
+            value: value of the height, must be a positive integer
+        """
         if not isinstance(value, int):
-            raise TypeError('height must be an integer')
+            raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError('height must be >= 0')
+            raise ValueError("height must be >= 0")
         self.__height = value
