@@ -14,8 +14,8 @@ class Rectangle:
             wrong = 'width' if not isinstance(width, int) else 'height'
             raise TypeError(wrong + 'must be an integer')
         if height < 0 or width < 0:
-                wrong = 'width' if width < 0 else 'height'
-                raise ValueError(wrong + 'must be >= 0')
+            wrong = 'width' if width < 0 else 'height'
+            raise ValueError(wrong + 'must be >= 0')
         self.__width = width
         self.__height = height
 
