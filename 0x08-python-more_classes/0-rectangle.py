@@ -1,4 +1,4 @@
-#!/usr/bin/python33
+#!/usr/bin/python3
 """
 The Rectangle Module:
 """
