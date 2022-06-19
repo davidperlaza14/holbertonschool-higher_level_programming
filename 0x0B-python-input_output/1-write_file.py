@@ -7,6 +7,6 @@ def write_file(filename="", text=""):
     """
     with open(filename, encoding='utf-8') as f:
         linenum = 0
-        for l in f:
+        for dalis in f:
             linenum += 1
         return linenum
