@@ -14,8 +14,8 @@ def write_file(filename="", text=""):
 
     count = 0
 
-    with open(filename) as f:
-        text = f.readlines()
+    with open(filename, encoding="utf-8") as f:
+        text = f.write() 
         for line in text:
             count += 1
 
