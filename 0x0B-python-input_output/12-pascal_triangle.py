@@ -1,28 +1,40 @@
-#!/usr/bin/python3
-"""Module 14-pascal_triangle.
-Returns a list of lists of integers
-representing the Pascal’s triangle of n.
-"""
+!/usr/bin/python3
+"""Function that returns the Pascal's triangle"""
 
 
 def pascal_triangle(n):
-    """Returns the pascal triangle of n.
-    Args:
-        - n: size of the triangle (rows)
-    Returns: a list of list of integers
-    """
+    """Function that returns a list of lists of integers representing
+    the Pascal's triangle of n"""
+
+    pt = []
 
     if n <= 0:
-        return []
+        return pt
 
-    dalis = [[0 for x in range(i + 1)] for i in range(n)]
-    dalis[0] = [1]
+    if n == 1:
+        pt = [[1]]
+        return pt
 
-    for dalis in range(1, n):
-        dalis[i][0] = 1
-        for j in range(1, i + 1):
-            if j < len(dalis[i - 1]):
-                dalis[i][j] = dalis[i - 1][j - 1] + dalis[i - 1][j]
-            else:
-                dalis[i][j] = dalis[i - 1][0]
-    return dalis
+    """list containing the first two lines"""
+    pt = [[1], [1, 1]]
+
+    """This loop is generated as many times as there are lines."""
+    for prev_val in range(1, n - 1):
+
+        """The line is initialized"""
+        line = [1]
+
+        """Loop generated for each of the vals in the previous line"""
+        for nxt_val in range(0, len(pt[prev_val]) - 1):
+
+            """New vals are added to the list"""
+            """The previous val is added to the next val in the list"""
+            line.extend([pt[prev_val][nxt_val] + pt[prev_val][nxt_val + 1]])
+
+        """The constant '1' is added at the end of the list."""
+        line += [1]
+
+        """The list is fill with the line"""
+        pt.append(line)
+
+    return pt
