@@ -1,4 +1,4 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 """Function that returns the Pascal's triangle"""
 
 
