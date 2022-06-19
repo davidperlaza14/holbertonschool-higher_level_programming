@@ -1,22 +1,12 @@
 #!/usr/bin/python3
-"""Module 1-number_of_lines.
-Counts number of lines in a file.
-"""
+"""Documentation for number_of_lines function"""
 
 
-def number_of_lines(filename=""):
-    """Counts lines in filename.
-    Args:
-        - filename: name of the file
-    Returns:
-        - number of lines
+def write_file(filename="", text=""):
+    """function that returns the number of lines of a text file
     """
-
-    count = 0
-
-    with open(filename) as f:
-        text = f.readlines()
-        for line in text:
-            count += 1
-
-    return count
+    with open(filename, encoding='utf-8') as f:
+        linenum = 0
+        for l in f:
+            linenum += 1
+        return linenum
