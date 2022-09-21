@@ -1,3 +1,8 @@
 #!/usr/bin/python3
-for i in range(ord('A'), ord('Z') + 1):
-    print('{}'.format(chr(i)), end='')
+def uppercase(str):
+    for i in str:
+        convr = ord(i)
+        if convr in range(97, 123):
+            convr =  convr - 32
+            print('{:c}'.format(chr(str)), end='')
+    print()
