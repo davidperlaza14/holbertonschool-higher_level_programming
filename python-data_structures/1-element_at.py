@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-import re
-from tkinter.messagebox import NO
-
-
 def element_at(my_list, idx):
     if idx < 0:
         return None
