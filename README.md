@@ -8,3 +8,9 @@ Holberton's curriculum for high-level programming. These projects are intended f
 ## Table of Contents :open_file_folder:
 
 ### [python-hello_world](./python-hello_world/)
+
+### [python-if_else_loops_functions](./python-if_else_loops_functions/)
+
+### [python-import_modules](./python-import_modules/)
+
+### [python-data_structures](./python-data_structures/)
