@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Module of Square"""
 
-
 class Square:
     """ An class called Square """
     def __init__(self, size=0):
@@ -12,7 +11,6 @@ class Square:
         Size: The size of the square
         """
         self.__size = size
-
 
     # Property
     @property
