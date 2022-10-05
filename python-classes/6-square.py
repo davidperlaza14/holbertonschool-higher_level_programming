@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 class Square:
     def __init__(self, size=0, position=(0, 0)):
+        """
+        Initialize the data
+        And validates if the number is an int
+        and > 0
+        Size: The size of the square
+        """
         self.size = size
         self.position = position
 
