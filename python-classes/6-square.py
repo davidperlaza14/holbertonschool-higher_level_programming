@@ -2,6 +2,10 @@
 """Module of Square"""
 
 class Square:
+    """ An class called Square
+        Attributes:
+        Size: The size of the square
+        Position: The position of the square"""
     def __init__(self, size=0, position=(0, 0)):
         """
         Initialize the data
