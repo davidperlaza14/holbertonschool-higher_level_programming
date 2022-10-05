@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module of Square"""
+
 class Square:
     def __init__(self, size=0, position=(0, 0)):
         """
