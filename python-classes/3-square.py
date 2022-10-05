@@ -1,18 +1,24 @@
 #!/usr/bin/python3
-"""
-Define a private instance attibute size
-size must be an int and greater than zero
-"""
+"""Module of Square"""
+
 
 class Square:
+    """ An class called Square """
+
     def __init__(self, size=0):
+        """
+        Initialize the data
+        And validates if the number is an int
+        and > 0
+        Size: The size of the square
+        """
         if type(size) != int:
-            raise TypeError('size must be an integer')
+            raise TypeError("size must be an integer")
         elif size < 0:
-            raise ValueError('size must be >= 0')
+            raise ValueError("size must be >= 0")
         else:
             self.__size = size
 
     def area(self):
-        size = self.__size
-        return size * size
+        """ Return the area of the square """
+        return self.__size ** 2
