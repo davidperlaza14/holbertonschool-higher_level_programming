@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Module of Square"""
+
+
 class Square:
     """ An class called Square """
     def __init__(self, size=0):
@@ -20,6 +23,7 @@ class Square:
     # Setter modifies
     @size.setter
     def size(self, value):
+        """ Validates if the number is valid """
         if type(value) != int:
             raise TypeError('size must be an integer')
         elif value < 0:
@@ -28,4 +32,5 @@ class Square:
             self.__size = value
 
     def area(self):
+        """ Return the area of the square """
         return self.__size ** 2
