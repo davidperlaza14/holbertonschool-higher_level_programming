@@ -84,4 +84,3 @@ class Rectangle:
 
         res = "Rectangle(" + w + ", " + h + ")"
         return res
-    
