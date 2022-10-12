@@ -4,9 +4,6 @@ A rectangle with width and height.
 """
 
 
-from turtle import width
-
-
 class Rectangle:
     """
     Rectangle functions and data
