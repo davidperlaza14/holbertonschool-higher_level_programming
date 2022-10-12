@@ -8,8 +8,8 @@ class Rectangle:
     """
     Rectangle functions and data
     """
-    
-    """Public class attribute"""
+
+    # Public
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
@@ -91,6 +91,7 @@ class Rectangle:
 
     def __del__(self):
         """ Print a message for del
+            Decrement instance when del is called
         """
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
