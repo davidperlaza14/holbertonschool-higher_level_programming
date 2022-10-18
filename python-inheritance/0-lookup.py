@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Lookup"""
+"""Lookup
+"""
 
 
 def lookup(obj):
@@ -7,4 +8,4 @@ def lookup(obj):
     of an object.
     """
 
-    return dir (obj)
+    return dir(obj)
