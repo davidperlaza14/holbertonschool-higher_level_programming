@@ -43,4 +43,4 @@
 * -You are not allowed to google anything
   -Whiteboard first
 ## Author
-** David Perlaza - [davidperlaza14](https://github.com/davidperlaza14)
+* David Perlaza - [davidperlaza14](https://github.com/davidperlaza14)
