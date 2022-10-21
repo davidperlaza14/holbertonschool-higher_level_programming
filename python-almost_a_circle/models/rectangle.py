@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """rectangle
 """
-from multiprocessing.sharedctypes import Value
-from base import Base
+from models.base import Base 
 
 
 class Rectangle(Base):
