@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """rectangle
 """
+from multiprocessing.sharedctypes import Value
 from base import Base
+
 
 class Rectangle(Base):
     """Inherits from Base
@@ -16,28 +18,30 @@ class Rectangle(Base):
 
         @property
         def width(self):
-            pass
+            return self.__width
+
         @width.setter
         def width(self, value):
-            pass
+            self.width = value
 
         @property
         def height(self):
-            pass
+            return self.__height
+
         @height.setter
         def height(self, value):
-            pass
+            self.__height = value
 
         @property
         def x(self):
-            pass
+            return self.__x
         @x.setter
         def x(self, value):
-            pass
+            self.__x = value
 
         @property
         def y(self):
-            pass
+            return self.__y
         @y.setter
         def y(self, value):
-            pass
+            self.__y = value
