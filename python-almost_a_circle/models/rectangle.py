@@ -98,3 +98,15 @@ class Rectangle(Base):
         Returns area
         '''
         return self.width * self.height
+
+    def display(self):
+        """Returns printed rectangle with '#'
+        y is newline, x is space
+        """
+
+        if self.__y != 0:
+            for newline in range(self.__y):
+                print()
+
+        for row in range(self.__height):
+            print((self.__x * " ") + (self.__width * '#'))
