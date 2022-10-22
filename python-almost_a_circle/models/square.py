@@ -7,49 +7,70 @@ from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Inherits from Rectangle
-    """
+    '''
+    Square class inherits from Rectangle
+    '''
 
     def __init__(self, size, x=0, y=0, id=None):
-        super().__init__(width=size, height=size, x=x, y=y, id=id)
+        '''
+        Constructor
+        '''
+        super().__init__(size, size, x, y, id)
+        self.size = size
 
     @property
     def size(self):
+        '''
+        size getter
+        '''
         return self.width
 
     @size.setter
     def size(self, value):
-        """size needs to be an int
-        """
-
+        '''
+        size setter
+        '''
         self.width = value
         self.height = value
 
-    def __str__(self):
-        """Returns formatted information display
-        """
-
-        return "[{}] ({}) {}/{} - {}".format(self.__class__.__name__,
-                                             self.id, self.x, self.y,
-                                             self.width)
-
     def update(self, *args, **kwargs):
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
-        elif len(args) != 0:
+        '''
+        Makes args variadic
+        '''
+        argc = len(args)
+        if argc > 0:
             try:
                 self.id = args[0]
                 self.size = args[1]
                 self.x = args[2]
                 self.y = args[3]
-            except IndexError:
+            except BaseException:
                 pass
         else:
-            print()
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+            if 'size' in kwargs:
+                self.size = kwargs['size']
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+            if 'y' in kwargs:
+                self.y = kwargs['y']
 
     def to_dictionary(self):
-        """Returns a dict representation
-        """
+        '''
+       Pull the parameters out in
+       the function as a dictionary
+        '''
+        return {
+            'id': self.id,
+            'x': self.x,
+            'size': self.size,
+            'y': self.y
+        }
 
-        return {'id': self.id, 'x': self.x, 'size': self.width, 'y': self.y}
+    def __str__(self):
+        '''
+        String representation
+        '''
+        return '[Square] ({}) {}/{} - {}'.format(self.id,
+                                                 self.x, self.y, self.size)
