@@ -136,7 +136,7 @@ class Rectangle(Base):
                 pass
         else:
             print()
-    
+
     def to_dictionary(self):
         """Returns dict representation
         """
