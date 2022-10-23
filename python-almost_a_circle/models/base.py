@@ -4,6 +4,7 @@
 
 
 import json
+from re import S
 
 
 class Base:
@@ -39,3 +40,13 @@ class Base:
                 # Using to_json_string(), and to_dictionary() to format
                 write_file.write(cls.to_json_string(
                                  [item.to_dictionary() for item in list_objs]))
+
+    @staticmethod
+    def from_json_string(json_string):
+        '''
+        Returns list of
+        dictionaries from JSON
+        '''
+        if json_string is None:
+            return []
+        return json.loads(json_string)
