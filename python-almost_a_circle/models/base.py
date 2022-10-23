@@ -86,3 +86,30 @@ class Base:
                 res.append(item)
         return res
 
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Saves to csv file
+        """
+
+        res = [item.to_dictionary() for item in list_objs]
+        with open(cls.__name__ + ".csv", mode="w") as save_file:
+            write_to = csv.DictWriter(save_file, res[0].keys())
+            write_to.writeheader()
+            write_to.writerows(res)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Loads from csv file
+        """
+
+        res = []
+        res_dict = {}
+        with open(cls.__name__ + ".csv", mode="r") as read_file:
+            read_from = csv.DictReader(read_file)
+            for item in read_from:
+                for k, v in dict(item).items():
+                    res_dict[k] = int(v)
+                # formatting with create()
+                res.append(cls.create(**res_dict))
+        return res
+
