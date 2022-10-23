@@ -67,3 +67,20 @@ class Base:
             return newInstance
         else:
             return None
+
+    @classmethod
+    def load_from_file(cls):
+        '''
+        Returns a list
+        of instances
+        '''
+        instanceList = []
+        try:
+            with open('{}.json'.format(cls.__name__), 'r',
+                      encoding='utf-8') as f:
+                objectList = cls.from_json_string(f.read())
+        except IOError:
+            return []
+        for dictionary in objectList:
+            instanceList.append(cls.create(**dictionary))
+        return instanceList
