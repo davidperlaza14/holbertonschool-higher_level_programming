@@ -1,36 +1,30 @@
 #!/usr/bin/python3
-"""Display name argument of states table"""
-import MySQLdb
+"""Conect the database"""
 import sys
+import MySQLdb
 
 
-def filter_names():
-    """Takes arguments argv to list from database
-    Only lists with states that matches name argument
+def mysqlconnect():
+    db_connection = None
+    db_connection = MySQLdb.connect(
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3],
+        host="localhost",
+        port=3306
+    )
 
-    Arguments:
-        argv[1]: mysql username
-        argv[2]: mysql password
-        argv[3]: database name
-        argv[4]: state name
-    """
-    db = MySQLdb.connect(host="localhost",
-                         port=3306,
-                         user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3])
+    cursor = db_connection.cursor()
+    cursor.execute("SELECT * FROM states WHERE name\
+         LIKE BINARY 'N%' ORDER BY states.id ASC")
+    states = cursor.fetchall()
 
-    cur = db.cursor()
+    for state in states:
+        print(state)
 
-    cur.execute("SELECT * FROM states WHERE BINARY name='{:s}'\
-                ORDER BY id ASC".format(sys.argv[4]))
-    rows = cur.fetchall()
-    for i in rows:
-        print(i)
-
-    cur.close()
-    db.close()
+    cursor.close()
+    db_connection.close()
 
 
-if __name__ == "__main__":
-    filter_names()
+if __name__ == '__main__':
+    mysqlconnect()
