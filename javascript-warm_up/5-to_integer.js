@@ -4,4 +4,4 @@ if (isNaN(convertArg)) {
   console.log('Not a number');
 } else {
   console.log('My number: ' + convertArg);
-}
+};
