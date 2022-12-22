@@ -6,4 +6,4 @@ if (isNaN(myVar) === true) {
   for (let x = 0; x < myVar; x++) {
     console.log('C is fun');
   }
-};
+}
